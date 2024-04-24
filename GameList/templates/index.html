@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tracker</title>
+</head>
+<body>
+    <div>
+        <h1>Game Tracker</h1>
+        <form id="gameForm" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="year">Year:</label><br>
+            <input type="number" id="year" name="year" required><br><br>
+            <button type="submit">Add</button>
+        </form>
+
+        {% if games %}
+        <h2>Played Games</h2>
+        <ul>
+            {% for game in games %}
+            <li>{{ game.name }} ({{ game.year }})</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form action="/clear" method="post">
+            <button type="submit">Clear</button>
+        </form>
+    </div>
+</body>
+</html>
